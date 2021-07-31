@@ -1,11 +1,3 @@
-    """
-HANGMAN GAME IN CLI
-
-    This code is the final project for the Intermediate Python course in Platzi.
-    It reads a list of words from the local files, ask for an user input and finds
-    the aleatory selected word. An ASCII art is displayed in the CLI as additional 
-    detail.
-    """
 # MODULES
 import os
 import random
