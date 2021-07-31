@@ -1,23 +1,29 @@
-"""
-REQUISITOS
-    Sistema de puntos, dibujo ASCII, mejora interfaz. 
-"""
+    """
+HANGMAN GAME IN CLI
+
+    This code is the final project for the Intermediate Python course in Platzi.
+    It reads a list of words from the local files, ask for an user input and finds
+    the aleatory selected word. An ASCII art is displayed in the CLI as additional 
+    detail.
+    """
 # MODULES
 import os
 import random
 import time
 from pyfiglet import Figlet
 
-
 FILE_TO_READ = "./files/data.txt"
 
-# LOGIC FOR HANGMAN GAME
+# HANGMAN GAME
 class Hangman:
+    
+    # Constructor
     def __init__(self):
-        self.score = 0
         self.words_list = read_data()
         ascii_art()
         time.sleep(3)
+    
+    # Selecting a random word
     def word(self):
         selected_word = random.sample(self.words_list, 1)
         chars = list(selected_word[0])
@@ -25,6 +31,7 @@ class Hangman:
         
         return chars
     
+    # User input
     def letter(self):
         validation  = False
         while validation == False:
@@ -39,6 +46,7 @@ class Hangman:
                 
         return user_input
     
+    # Guessing the word
     def guess(self):
         os.system("clear")
         word_to_guess = self.word()
@@ -60,15 +68,14 @@ class Hangman:
                     guessed_letters[i] = letter_as_input
                     guessed_idx += 1
                     missing_letters = (len(word_to_guess)-guessed_idx)
-                else:
-                    print('You have already used that letter.')
         
+        # Guessed the word
         os.system("clear")
         print(" ".join(guessed_letters))
         print(f"You've guessed the word!\n\n")
         ascii_art ()
         
-# ASCII ART FOTNS:
+# ASCII ART FOTNS
 def ascii_art ():
     custom_fig = Figlet(font='isometric2')
     print(custom_fig.renderText('HMG'))
